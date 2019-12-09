@@ -1,0 +1,19 @@
+<p>Language List</p>
+
+<div class="container">
+    <div class="row" *ngIf="nullData">
+        Please Select the country for details.
+    </div>
+    <div class="row" *ngIf="validResp">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Native</th>
+            </tr>
+            <tr *ngFor="let item of languageList">
+                <td>{{item.name}}</td>
+                <td>{{item.nativeName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

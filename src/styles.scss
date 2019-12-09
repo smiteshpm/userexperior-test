@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+$pagemargin: 10px;
+$pagepadding: 10px;
+
+.mycontainer{
+    margin: $pagemargin;
+    padding: $pagepadding;
+}

@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class CountryServiceService {
 
+  //observales for each page data.
   private countryDetailsSrc = new BehaviorSubject(null);
   countryDetails = this.countryDetailsSrc.asObservable();
 
@@ -25,6 +26,7 @@ export class CountryServiceService {
 
   constructor(private apiCall: ApiCallServiceService) { }
 
+  //api call for countries
   getCountries(): Observable<any>{
     return this.apiCall.get('rest/v2/all')
     .pipe(map(
@@ -35,6 +37,7 @@ export class CountryServiceService {
     ));
   }
 
+  // api call for language data
   getlanguageDetails(country: string):Observable<any>{
     const url = 'rest/v2/alpha/' + country;
 
@@ -48,6 +51,7 @@ export class CountryServiceService {
     ));
   }
 
+  // api call for currency data
   getcurrencyDetails(country: string):Observable<any>{
     const url = 'rest/v2/alpha/' + country;
 
@@ -61,10 +65,12 @@ export class CountryServiceService {
     ));
   }
 
+  // set selected country so that can be used by other pages/components/modules
   selectedCountryFn(country: string) {
     this.selectedCountrySrc.next(country);
   }
 
+  // api call for country details data
   getCountryDetails(code: string): Observable<any>{
     const url = 'rest/v2/alpha/' + code;
     return this.apiCall.get(url)
@@ -76,8 +82,4 @@ export class CountryServiceService {
       }
     ));
   }
-
-  // getLanguageDetails(code:string): Observable<any>{
-  //   const url = ''
-  // }
 }

@@ -24,8 +24,10 @@ export class AppComponent {
     let currentPath = this.location.path();
     selectedCountry = event.target.value;
     this.countryList.selectedCountryFn(selectedCountry);
-    console.log(event.target.value);
-    console.log(currentPath);
+    // console.log(event.target.value);
+    // console.log(currentPath);
+    
+    //logic for using onchange event based on actve page
     if(currentPath == ''){
       this.countryList.getCountryDetails(selectedCountry).subscribe(res => {
         // console.log(res);

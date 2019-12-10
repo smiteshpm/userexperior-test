@@ -38,20 +38,9 @@ export class CurrencyListComponent implements OnInit {
         this.nullData = true;
       }
     });
-
-    // this.countryList.countryDetails.subscribe(res => {
-    //   // console.log(res.languages);
-    //   if (res != null) {
-    //     this.currencyList = res.currencies;
-    //     this.validResp = true;
-    //     this.nullData = false;
-    //   } else {
-    //     this.validResp = false;
-    //     this.nullData = true;
-    //   }
-    // });
   }
 
+  //destroy subscribed observables
   ngOnDestroy(){
     this.csubscriber2.unsubscribe();
     this.csubscriber1.unsubscribe();

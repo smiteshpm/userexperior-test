@@ -27,10 +27,7 @@ export class CountryDetailsComponent implements OnInit {
 
       if(this.selectedCountry != null){
         this.subscriber2 = this.countryList.getCountryDetails(this.selectedCountry).subscribe(res =>{
-          // console.log(res);
-           // console.log(res.languages);
           if (res != null) {
-            // this.countrylist = res;
             this.countryDetails = [
               {'key':'Country Name', 'value': res.name},
               {'key':'Capital', 'value': res.capital},
@@ -49,30 +46,9 @@ export class CountryDetailsComponent implements OnInit {
         this.nullData = true;
       }
     });
-
-    // this.countryList.countryDetails.subscribe(res =>{
-    //   // console.log('res', res);
-    //   // let countryDetails = {};
-    //   if (res != null) {
-    //     this.countryDetails = [
-    //       {'key':'country-name', 'value': res.name},
-    //       {'key':'capital', 'value': res.capital},
-    //       {'key':'region', 'value': res.region},
-    //       {'key':'sub-region', 'value': res.subregion},
-    //       {'key':'population', 'value': res.population},
-    //       {'key':'area', 'value': res.area},
-    //       {'key':'alpha3Code', 'value': res.alpha3Code}
-    //     ];
-    //     // console.log(this.countryDetails);
-    //     this.validResp = true;
-    //     this.nullData = false;
-    //   } else {
-    //     this.validResp = false;
-    //     this.nullData = true;
-    //   }
-    // });
   }
 
+  //destroy subscribed observables
   ngOnDestroy(){
     this.subscriber2.unsubscribe();
     this.subscriber1.unsubscribe();

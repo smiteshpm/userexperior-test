@@ -17,17 +17,14 @@ export class LanguageListComponent implements OnInit {
   validResp = false;
   private lsubscriber1: Subscription = Subscription.EMPTY;
   private lsubscriber2: Subscription = Subscription.EMPTY;
-  // lsubscriber1: any;
-  // lsubscriber2: any;
-  ngOnInit() {
 
+  ngOnInit() {
     this.lsubscriber1 = this.countryList.selectedCountry.subscribe(res => {
       this.selectedCountry = res;
 
-      if(this.selectedCountry != null){
+      if(this.selectedCountry != null){ //check if select dropdown has no country selected
         this.lsubscriber2 = this.countryList.getlanguageDetails(this.selectedCountry).subscribe(res =>{
-          console.log(res);
-           // console.log(res.languages);
+          // console.log(res);
           if (res != null) {
             this.languageList = res;
             this.validResp = true;
@@ -41,6 +38,7 @@ export class LanguageListComponent implements OnInit {
     });
   }
 
+  //destroy subscribed observables
   ngOnDestroy(){
     this.lsubscriber2.unsubscribe();
     this.lsubscriber1.unsubscribe();

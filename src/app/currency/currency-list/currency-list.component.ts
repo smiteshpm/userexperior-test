@@ -1,3 +1,4 @@
+import { CountryServiceService } from './../../services/country-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrencyListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private countryList: CountryServiceService) { }
 
+  currencyList: any;
+  nullData = true;
+  validResp = false;
   ngOnInit() {
+    this.countryList.countryDetails.subscribe(res => {
+      // console.log(res.languages);
+      if (res != null) {
+        this.currencyList = res.currencies;
+        this.validResp = true;
+        this.nullData = false;
+      } else {
+        this.validResp = false;
+        this.nullData = true;
+      }
+    });
   }
 
 }

@@ -17,6 +17,12 @@ export class CountryServiceService {
   private languageDetailsSrc = new BehaviorSubject(null);
   languageDetails = this.languageDetailsSrc.asObservable();
 
+  private currencyDetailsSrc = new BehaviorSubject(null);
+  currencyDetails = this.countryDetailsSrc.asObservable();
+
+  private selectedCountrySrc = new BehaviorSubject(null);
+  selectedCountry = this.selectedCountrySrc.asObservable();
+
   constructor(private apiCall: ApiCallServiceService) { }
 
   getCountries(): Observable<any>{
@@ -29,11 +35,16 @@ export class CountryServiceService {
     ));
   }
 
+  selectedCountryFn(country: string) {
+    this.selectedCountrySrc.next(country);
+  }
+
   getCountryDetails(code: string): Observable<any>{
     const url = 'rest/v2/alpha/' + code;
     return this.apiCall.get(url)
     .pipe(map(
       res => {
+        console.log(res);
         this.countryDetailsSrc.next(res);
         return res;
       }

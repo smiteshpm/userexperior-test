@@ -14,6 +14,7 @@ export class LanguageListComponent implements OnInit {
   nullData = true;
   validResp = false;
   ngOnInit() {
+    
     this.countryList.countryDetails.subscribe(res =>{
       // console.log(res.languages);
       if (res != null) {

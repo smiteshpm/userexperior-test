@@ -20,6 +20,7 @@ export class AppComponent {
     const x = 3;
     let selectedCountry = '';
     selectedCountry = event.target.value;
+    this.countryList.selectedCountryFn(selectedCountry);
     console.log(event.target.value);
     this.countryList.getCountryDetails(selectedCountry).subscribe(res => {
       // console.log(res);

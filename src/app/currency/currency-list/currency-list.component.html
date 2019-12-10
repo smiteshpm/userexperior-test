@@ -1,1 +1,21 @@
 <p>Currency List</p>
+
+<div class="container">
+    <div class="row" *ngIf="nullData">
+        Please Select the country for details.
+    </div>
+    <div class="row" *ngIf="validResp">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Symbol</th>
+            </tr>
+            <tr *ngFor="let item of currencyList">
+                <td>{{item.name}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.symbol}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

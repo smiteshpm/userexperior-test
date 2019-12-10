@@ -35,6 +35,32 @@ export class CountryServiceService {
     ));
   }
 
+  getlanguageDetails(country: string):Observable<any>{
+    const url = 'rest/v2/alpha/' + country;
+
+    return this.apiCall.get(url)
+    .pipe(map(
+      res => {
+        // console.log(res);
+        this.languageDetailsSrc.next(res.languages);
+        return res.languages;
+      }
+    ));
+  }
+
+  getcurrencyDetails(country: string):Observable<any>{
+    const url = 'rest/v2/alpha/' + country;
+
+    return this.apiCall.get(url)
+    .pipe(map(
+      res => {
+        // console.log(res);
+        this.currencyDetailsSrc.next(res.currencies);
+        return res.currencies;
+      }
+    ));
+  }
+
   selectedCountryFn(country: string) {
     this.selectedCountrySrc.next(country);
   }

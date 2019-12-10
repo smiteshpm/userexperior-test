@@ -6,3 +6,13 @@ $pagepadding: 10px;
     margin: $pagemargin;
     padding: $pagepadding;
 }
+
+table{
+    margin: $pagemargin;
+    padding: $pagepadding;
+}
+
+td, th{
+    padding: $pagepadding;
+    border: 1px solid;
+}

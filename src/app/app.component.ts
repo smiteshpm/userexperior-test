@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CountryServiceService } from './services/country-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +10,35 @@ import { CountryServiceService } from './services/country-service.service';
 export class AppComponent {
   title = 'userexperior-test';
   countrylist: any;
-  constructor( private countryList: CountryServiceService ) {
+  constructor( private countryList: CountryServiceService, private location: Location ) {
     this.countryList.getCountries().subscribe(res => {
       // console.log(res);
       this.countrylist = res;
     });
+    // console.log(location.path());
   }
 
   selectCountry(event: any){
-    const x = 3;
+
     let selectedCountry = '';
+    let currentPath = this.location.path();
     selectedCountry = event.target.value;
     this.countryList.selectedCountryFn(selectedCountry);
     console.log(event.target.value);
-    this.countryList.getCountryDetails(selectedCountry).subscribe(res => {
-      // console.log(res);
-      return res;
-    });
+    console.log(currentPath);
+    if(currentPath == ''){
+      this.countryList.getCountryDetails(selectedCountry).subscribe(res => {
+        // console.log(res);
+        return res;
+      });
+    } else if(currentPath == '/language-list'){
+      this.countryList.getlanguageDetails(selectedCountry).subscribe(res =>{
+        return res;
+      });
+    } else if(currentPath == '/currency-list'){
+      this.countryList.getcurrencyDetails(selectedCountry).subscribe(res =>{
+        return res;
+      });
+    }
   }
 }

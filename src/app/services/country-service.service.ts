@@ -32,7 +32,6 @@ export class CountryServiceService {
     .pipe(map(
       res => {
         return res;
-        console.log(res);
       }
     ));
   }
@@ -76,7 +75,7 @@ export class CountryServiceService {
     return this.apiCall.get(url)
     .pipe(map(
       res => {
-        console.log(res);
+        // console.log(res);
         this.countryDetailsSrc.next(res);
         return res;
       }

@@ -25,7 +25,7 @@ export class CurrencyListComponent implements OnInit {
 
       if(this.selectedCountry != null){
         this.csubscriber2 = this.countryList.getcurrencyDetails(this.selectedCountry).subscribe(res =>{
-          console.log(res);
+          // console.log(res);
            // console.log(res.languages);
           if (res != null) {
             this.currencyList = res;
